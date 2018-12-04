@@ -1,11 +1,20 @@
 # coding=utf-8
 from time import sleep
-from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
 class BasePage(object):
     def __init__(self, driver):
         self.driver = driver
+
+    # 判断元素是否存在
+    def is_element_exist(self, xpath):
+        s = self.driver.find_elements_by_xpath(xpath)
+        if len(s) == 0:
+            return False
+        elif len(s) == 1:
+            return True
+        else:
+            return False
 
 class LoginPage(BasePage):
     # 从输入的username获取用户名
@@ -19,12 +28,12 @@ class LoginPage(BasePage):
     # 点击登录按钮
     def click_loginButton(self):
         self.driver.find_element_by_link_text("登录").click()
-        sleep(1)
+        sleep(5)
 
     # 点击登录
     def click_login(self):
         self.driver.find_element_by_id("jsLoginBtn").click()
-        sleep(3)
+        sleep(5)
 
 class HomePage(BasePage):
     # 点击更多课程
@@ -43,7 +52,8 @@ class HomePage(BasePage):
 
     # 查看具体机构【华中科技大学】
     def click_insti_hust(self):
-        self.driver.find_element_by_link_text('华中科技大学').click()
+        sleep(8)
+        self.driver.find_element_by_xpath("/html/body/section[4]/div/div/div/div[2]/ul/li[1]/a/p/span").click()
 
     # 点击置顶按钮
     def click_sticky(self):
@@ -114,8 +124,9 @@ class CoursePage(BasePage):
     # 退出登录
     def log_out(self):
         self.driver.find_element_by_xpath(
-            "/html/body/section[1]/header/div/div[1]/div/div[2]/dl/dd/img").click()  # 个人信息
-        sleep(2)
+            "/html/body/section[1]/header/div/div[1]/div/div[2]/dl/dd").click()  # 个人信息
+        # self.driver.find_element_by_css_selector('.btn>a[2]').click() # 退出
+        sleep(8)
         self.driver.find_element_by_xpath(
             "/html/body/section[1]/header/div/div[1]/div/div[2]/div/div/a[2]").click()  # 退出
 
@@ -124,7 +135,7 @@ class CoursePage(BasePage):
         self.driver.find_element_by_id("account_l").send_keys('yankai')
         self.driver.find_element_by_id("password_l").send_keys('abc123456' + Keys.RETURN)
         self.driver.find_element_by_id("jsLoginBtn").click()
-        sleep(3)
+        sleep(5)
 
     # 返回首页
     def return_homePage(self):
