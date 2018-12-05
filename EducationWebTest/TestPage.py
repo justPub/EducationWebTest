@@ -16,6 +16,7 @@ import BasePage
 import unittest
 from time import sleep
 from selenium import webdriver
+from selenium.webdriver import ActionChains
 from selenium.webdriver.common.keys import Keys
 # mutex_lock = 0
 class HomeTestCase(unittest.TestCase):
@@ -675,7 +676,8 @@ class TeacherTestCase(unittest.TestCase):
         teacher_page.click_all()
         teacher_page.click_details()
         self.assertIn('讲师详情 - 慕学在线网', self.browser.title)
-        # teacher_page.log_in()
+        self.browser.find_element_by_link_text("登录").click()
+        teacher_page.log_in()
 
     def test_B3_2_1_2(self):
         u'''test_B3_2_1_2'''
@@ -692,11 +694,474 @@ class TeacherTestCase(unittest.TestCase):
         teacher_page.click_teacher()
         teacher_page.click_all()
         teacher_page.click_details()
-        self.assertIn('讲师详情 - 慕学在线网', self.browser.title)
         teacher_page.click_detail_collection()
+        self.assertIn('慕学在线网登录', self.browser.title)
+        if self.browser.title != '慕学在线网登录':
+            self.browser.find_element_by_link_text("登录").click()
+        teacher_page.log_in()
+
+    def test_B3_2_1_1_2(self):
+        u'''test_B3_2_1_1_2'''
+        teacher_page = BasePage.TeacherPage(self.browser)
+        teacher_page.click_teacher()
+        teacher_page.click_all()
+        teacher_page.click_details()
+        if teacher_page.judge_detail_collection():
+            teacher_page.click_detail_collection()
+        self.assertTrue(self.browser.find_element_by_id('jsLeftBtn').text == '已收藏', 'ERROR')
+
+    def test_B3_2_1_1_3(self):
+        u'''test_B3_2_1_1_3'''
+        teacher_page = BasePage.TeacherPage(self.browser)
+        teacher_page.click_teacher()
+        teacher_page.click_all()
+        teacher_page.click_details()
+        if not teacher_page.judge_detail_collection():
+            teacher_page.click_detail_collection()
+        self.assertTrue(self.browser.find_element_by_id('jsLeftBtn').text == '收藏', 'ERROR')
+
+    def test_B3_2_1_2_1(self):
+        u'''test_B3_2_1_2_1'''
+        teacher_page = BasePage.TeacherPage(self.browser)
+        teacher_page.click_teacher()
+        teacher_page.click_all()
+        teacher_page.click_details()
+        teacher_page.click_detail_share()
+        self.assertTrue(self.browser.find_element_by_xpath(
+            "/html/body/section[3]/div/div[1]/div[1]/div/dl/dt/div[2]/span[2]/a").text == '已分享', 'ERROR')
+
+    def test_B3_2_1_3_1(self):
+        u'''test_B3_2_1_3_1'''
+        teacher_page = BasePage.TeacherPage(self.browser)
+        teacher_page.log_out()
+        teacher_page.click_teacher()
+        teacher_page.click_all()
+        teacher_page.click_details()
+        teacher_page.click_detail_insti_collection()
+        self.assertIn('慕学在线网登录', self.browser.title)
+        teacher_page.log_in()
+
+    def test_B3_2_1_3_2(self):
+        u'''test_B3_2_1_3_2'''
+        teacher_page = BasePage.TeacherPage(self.browser)
+        teacher_page.click_teacher()
+        teacher_page.click_all()
+        teacher_page.click_details()
+        if teacher_page.judge_detail_insti_collection():
+            teacher_page.click_detail_insti_collection()
+        self.assertTrue(self.browser.find_element_by_id('jsRightBtn').text == '已收藏', 'ERROR')
+
+    def test_B3_2_1_3_3(self):
+        u'''test_B3_2_1_3_3'''
+        teacher_page = BasePage.TeacherPage(self.browser)
+        teacher_page.click_teacher()
+        teacher_page.click_all()
+        teacher_page.click_details()
+        if not teacher_page.judge_detail_insti_collection():
+            teacher_page.click_detail_insti_collection()
+        self.assertTrue(self.browser.find_element_by_id('jsRightBtn').text == '收藏', 'ERROR')
+
+    def test_B3_2_1_4(self):
+        u'''test_B3_2_1_4'''
+        teacher_page = BasePage.TeacherPage(self.browser)
+        teacher_page.click_teacher()
+        teacher_page.click_all()
+        teacher_page.click_details()
+        teacher_page.click_detail_course()
+        self.assertIn('课程详情页 - 慕学在线网', self.browser.title)
+
+    def test_B3_2_1_5(self):
+        u'''test_B3_2_1_5'''
+        teacher_page = BasePage.TeacherPage(self.browser)
+        teacher_page.click_teacher()
+        teacher_page.click_all()
+        teacher_page.click_details()
+        teacher_page.click_detail_ranklist_teacher()
+        self.assertTrue(self.browser.find_element_by_xpath(
+            "/html/body/section[3]/div/div[1]/div[1]/div/dl/dd/a/h1").text == '刘小峰金牌讲师', 'ERROR')
+
+    def test_B3_2_2(self):
+        u'''test_B3_2_2'''
+        teacher_page = BasePage.TeacherPage(self.browser)
+        teacher_page.click_teacher()
+        teacher_page.click_all()
+        teacher_page.click_ranklist_teacher()
+        self.assertTrue(self.browser.find_element_by_xpath(
+            "/html/body/section[3]/div/div[1]/div[1]/div/dl/dd/a/h1").text == '刘小峰金牌讲师', 'ERROR')
+
+    def test_B3_3_1_1(self):
+        u'''test_B3_3_1_1'''
+        teacher_page = BasePage.TeacherPage(self.browser)
+        teacher_page.log_out()
+        teacher_page.click_teacher()
+        teacher_page.click_polpularity()
+        teacher_page.click_details()
         self.assertIn('讲师详情 - 慕学在线网', self.browser.title)
-        # teacher_page.log_in()
-        # self.assertTrue(teacher_page.is_element_exist('/html/body/section[2]/div/div/ul/li[3]'), 'ERROR')
+        self.browser.find_element_by_link_text("登录").click()
+        teacher_page.log_in()
+
+    def test_B3_3_1_2(self):
+        u'''test_B3_3_1_2'''
+        teacher_page = BasePage.TeacherPage(self.browser)
+        teacher_page.click_teacher()
+        teacher_page.click_polpularity()
+        teacher_page.click_details()
+        self.assertIn('讲师详情 - 慕学在线网', self.browser.title)
+
+    def test_B3_3_1_1_1(self):
+        u'''test_B3_3_1_1_1'''
+        teacher_page = BasePage.TeacherPage(self.browser)
+        teacher_page.log_out()
+        teacher_page.click_teacher()
+        teacher_page.click_polpularity()
+        teacher_page.click_details()
+        teacher_page.click_detail_collection()
+        self.assertIn('慕学在线网登录', self.browser.title)
+        if self.browser.title != '慕学在线网登录':
+            self.browser.find_element_by_link_text("登录").click()
+        teacher_page.log_in()
+
+    def test_B3_3_1_1_2(self):
+        u'''test_B3_3_1_1_2'''
+        teacher_page = BasePage.TeacherPage(self.browser)
+        teacher_page.click_teacher()
+        teacher_page.click_polpularity()
+        teacher_page.click_details()
+        if teacher_page.judge_detail_collection():
+            teacher_page.click_detail_collection()
+        self.assertTrue(self.browser.find_element_by_id('jsLeftBtn').text == '已收藏', 'ERROR')
+
+    def test_B3_3_1_1_3(self):
+        u'''test_B3_3_1_1_3'''
+        teacher_page = BasePage.TeacherPage(self.browser)
+        teacher_page.click_teacher()
+        teacher_page.click_polpularity()
+        teacher_page.click_details()
+        if not teacher_page.judge_detail_collection():
+            teacher_page.click_detail_collection()
+        self.assertTrue(self.browser.find_element_by_id('jsLeftBtn').text == '收藏', 'ERROR')
+
+    def test_B3_3_1_2_1(self):
+        u'''test_B3_3_1_2_1'''
+        teacher_page = BasePage.TeacherPage(self.browser)
+        teacher_page.click_teacher()
+        teacher_page.click_polpularity()
+        teacher_page.click_details()
+        teacher_page.click_detail_share()
+        self.assertTrue(self.browser.find_element_by_xpath(
+            "/html/body/section[3]/div/div[1]/div[1]/div/dl/dt/div[2]/span[2]/a").text == '已分享', 'ERROR')
+
+    def test_B3_3_1_3_1(self):
+        u'''test_B3_3_1_3_1'''
+        teacher_page = BasePage.TeacherPage(self.browser)
+        teacher_page.log_out()
+        teacher_page.click_teacher()
+        teacher_page.click_polpularity()
+        teacher_page.click_details()
+        teacher_page.click_detail_insti_collection()
+        self.assertIn('慕学在线网登录', self.browser.title)
+        teacher_page.log_in()
+
+    def test_B3_3_1_3_2(self):
+        u'''test_B3_3_1_3_2'''
+        teacher_page = BasePage.TeacherPage(self.browser)
+        teacher_page.click_teacher()
+        teacher_page.click_polpularity()
+        teacher_page.click_details()
+        if teacher_page.judge_detail_insti_collection():
+            teacher_page.click_detail_insti_collection()
+        self.assertTrue(self.browser.find_element_by_id('jsRightBtn').text == '已收藏', 'ERROR')
+
+    def test_B3_3_1_3_3(self):
+        u'''test_B3_3_1_3_3'''
+        teacher_page = BasePage.TeacherPage(self.browser)
+        teacher_page.click_teacher()
+        teacher_page.click_polpularity()
+        teacher_page.click_details()
+        if not teacher_page.judge_detail_insti_collection():
+            teacher_page.click_detail_insti_collection()
+        self.assertTrue(self.browser.find_element_by_id('jsRightBtn').text == '收藏', 'ERROR')
+
+    def test_B3_3_1_4(self):
+        u'''test_B3_3_1_4'''
+        teacher_page = BasePage.TeacherPage(self.browser)
+        teacher_page.click_teacher()
+        teacher_page.click_polpularity()
+        teacher_page.click_details()
+        teacher_page.click_detail_course()
+        self.assertIn('课程详情页 - 慕学在线网', self.browser.title)
+
+    def test_B3_3_1_5(self):
+        u'''test_B3_3_1_5'''
+        teacher_page = BasePage.TeacherPage(self.browser)
+        teacher_page.click_teacher()
+        teacher_page.click_polpularity()
+        teacher_page.click_details()
+        teacher_page.click_detail_ranklist_teacher()
+        self.assertTrue(self.browser.find_element_by_xpath(
+            "/html/body/section[3]/div/div[1]/div[1]/div/dl/dd/a/h1").text == '刘小峰金牌讲师', 'ERROR')
+
+    def test_B3_3_2(self):
+        u'''test_B3_3_2'''
+        teacher_page = BasePage.TeacherPage(self.browser)
+        teacher_page.click_teacher()
+        teacher_page.click_polpularity()
+        teacher_page.click_ranklist_teacher()
+        self.assertTrue(self.browser.find_element_by_xpath(
+            "/html/body/section[3]/div/div[1]/div[1]/div/dl/dd/a/h1").text == '刘小峰金牌讲师', 'ERROR')
+
+class InstiTestCase(unittest.TestCase):
+
+    # @classmethod
+    # def setUpClass(cls):
+    #     print("开始测试")
+    #     cls.browser = webdriver.Firefox()
+    #     cls.browser.get('http://111.230.45.33:3000/')
+    #     login_page = BasePage.LoginPage(cls.browser)
+    #     login_page.click_loginButton()
+    #     login_page.set_username("yankai")
+    #     login_page.set_password("abc123456")
+    #     login_page.click_login()
+    #
+    # @classmethod
+    # def tearDownClass(cls):
+    #     print("结束测试")
+    #     cls.browser.quit()
+
+
+    def setUp(self):
+        print('开始')
+        self.browser = webdriver.Firefox()
+        self.browser.get('http://111.230.45.33:3000/')
+        login_page = BasePage.LoginPage(self.browser)
+        login_page.click_loginButton()
+        login_page.set_username("yankai")
+        login_page.set_password("abc123456")
+        login_page.click_login()
+
+    def tearDown(self):
+        print('结束')
+        self.browser.close()
+
+
+    def test_B4_1(self):
+        u'''test_B4_1'''
+        insti_page = BasePage.InstiPage(self.browser)
+        insti_page.click_insti()
+        self.assertIn('课程机构列表 - 慕学在线网', self.browser.title)
+
+    def test_B4_2_1_1(self):
+        u'''test_B4_2_1_1'''
+        insti_page = BasePage.InstiPage(self.browser)
+        insti_page.click_insti()
+        insti_page.click_class_all()
+        insti_page.click_province_all()
+        insti_page.click_list_all()
+        insti_page.click_contact()
+        self.assertIn('机构首页', self.browser.title)
+
+    def test_B4_2_1_2(self):
+        u'''test_B4_2_1_2'''
+        insti_page = BasePage.InstiPage(self.browser)
+        insti_page.click_insti()
+        insti_page.click_class_all()
+        insti_page.click_province_all()
+        insti_page.click_list_learn()
+        insti_page.click_contact()
+        self.assertIn('机构首页', self.browser.title)
+
+    def test_B4_2_1_3(self):
+        u'''test_B4_2_1_3'''
+        insti_page = BasePage.InstiPage(self.browser)
+        insti_page.click_insti()
+        insti_page.click_class_all()
+        insti_page.click_province_all()
+        insti_page.click_list_course()
+        insti_page.click_contact()
+        self.assertIn('机构首页', self.browser.title)
+
+    def test_B4_3_1_1(self):
+        u'''test_B4_3_1_1'''
+        insti_page = BasePage.InstiPage(self.browser)
+        insti_page.click_insti()
+        insti_page.click_want_name()
+        insti_page.click_want_phone()
+        insti_page.click_want_course()
+        insti_page.click_want_contact()
+        sleep(3)
+        self.assertTrue(self.browser.find_element_by_id('jsCompanyTips').text == '添加出错', 'ERROR')
+
+    def test_B4_3_1_2(self):
+        u'''test_B4_3_1_2'''
+        insti_page = BasePage.InstiPage(self.browser)
+        insti_page.click_insti()
+        insti_page.click_want_name('tom')
+        insti_page.click_want_phone()
+        insti_page.click_want_course()
+        insti_page.click_want_contact()
+        sleep(3)
+        self.assertTrue(self.browser.find_element_by_id('jsCompanyTips').text == '添加出错', 'ERROR')
+
+    def test_B4_3_1_3(self):
+        u'''test_B4_3_1_3'''
+        insti_page = BasePage.InstiPage(self.browser)
+        insti_page.click_insti()
+        insti_page.click_want_name()
+        insti_page.click_want_phone('13904367258')
+        insti_page.click_want_course()
+        insti_page.click_want_contact()
+        sleep(3)
+        self.assertTrue(self.browser.find_element_by_id('jsCompanyTips').text == '添加出错', 'ERROR')
+
+    def test_B4_3_1_4(self):
+        u'''test_B4_3_1_4'''
+        insti_page = BasePage.InstiPage(self.browser)
+        insti_page.click_insti()
+        insti_page.click_want_name()
+        insti_page.click_want_phone()
+        insti_page.click_want_course('数据结构')
+        insti_page.click_want_contact()
+        sleep(3)
+        self.assertTrue(self.browser.find_element_by_id('jsCompanyTips').text == '添加出错', 'ERROR')
+
+    def test_B4_3_1_5(self):
+        u'''test_B4_3_1_5'''
+        insti_page = BasePage.InstiPage(self.browser)
+        insti_page.click_insti()
+        insti_page.click_want_name('tom')
+        insti_page.click_want_phone('13904367258')
+        insti_page.click_want_course('数据结构')
+        insti_page.click_want_contact()
+        s = insti_page.click_alert()
+        self.assertTrue(s == 1, 'ERROR')
+
+    def test_B4_3_1_6(self):
+        u'''test_B4_3_1_6'''
+        insti_page = BasePage.InstiPage(self.browser)
+        insti_page.click_insti()
+        insti_page.click_want_name('闫')
+        insti_page.click_want_phone('13904367258')
+        insti_page.click_want_course('数据结构')
+        insti_page.click_want_contact()
+        s = insti_page.click_alert()
+        self.assertTrue(s == 1, 'ERROR')
+
+    def test_B4_3_1_7(self):
+        u'''test_B4_3_1_7'''
+        insti_page = BasePage.InstiPage(self.browser)
+        insti_page.click_insti()
+        insti_page.click_want_name('闫tom')
+        insti_page.click_want_phone('13904367258')
+        insti_page.click_want_course('数据结构')
+        insti_page.click_want_contact()
+        s = insti_page.click_alert()
+        self.assertTrue(s == 1, 'ERROR')
+
+    def test_B4_3_1_8(self):
+        u'''test_B4_3_1_8'''
+        insti_page = BasePage.InstiPage(self.browser)
+        insti_page.click_insti()
+        insti_page.click_want_name('~!@#$%^&*()_+|{}:"<>?.,;\'[]\=-')
+        insti_page.click_want_phone('13904367258')
+        insti_page.click_want_course('数据结构')
+        insti_page.click_want_contact()
+        sleep(3)
+        self.assertTrue(self.browser.find_element_by_id('jsCompanyTips').text == '添加出错', 'ERROR')
+
+    def test_B4_3_1_9(self):
+        u'''test_B4_3_1_9'''
+        insti_page = BasePage.InstiPage(self.browser)
+        insti_page.click_insti()
+        insti_page.click_want_name('闫')
+        insti_page.click_want_phone('139043672581')
+        insti_page.click_want_course('数据结构')
+        insti_page.click_want_contact()
+        sleep(3)
+        self.assertTrue(self.browser.find_element_by_id('jsCompanyTips').text == '添加出错', 'ERROR')
+
+    def test_B4_3_1_10(self):
+        u'''test_B4_3_1_10'''
+        insti_page = BasePage.InstiPage(self.browser)
+        insti_page.click_insti()
+        insti_page.click_want_name('闫')
+        insti_page.click_want_phone('12345678911')
+        insti_page.click_want_course('数据结构')
+        insti_page.click_want_contact()
+        sleep(3)
+        self.assertTrue(self.browser.find_element_by_id('jsCompanyTips').text == '添加出错', 'ERROR')
+
+    def test_B4_3_1_11(self):
+        u'''test_B4_3_1_11'''
+        insti_page = BasePage.InstiPage(self.browser)
+        insti_page.click_insti()
+        insti_page.click_want_name('闫')
+        insti_page.click_want_phone('1234567')
+        insti_page.click_want_course('数据结构')
+        insti_page.click_want_contact()
+        sleep(3)
+        self.assertTrue(self.browser.find_element_by_id('jsCompanyTips').text == '添加出错', 'ERROR')
+
+    def test_B4_3_1_12(self):
+        u'''test_B4_3_1_12'''
+        insti_page = BasePage.InstiPage(self.browser)
+        insti_page.click_insti()
+        insti_page.click_want_name('闫')
+        insti_page.click_want_phone('139@436！258')
+        insti_page.click_want_course('数据结构')
+        insti_page.click_want_contact()
+        sleep(3)
+        self.assertTrue(self.browser.find_element_by_id('jsCompanyTips').text == '添加出错', 'ERROR')
+
+    def test_B4_3_1_13(self):
+        u'''test_B4_3_1_13'''
+        insti_page = BasePage.InstiPage(self.browser)
+        insti_page.click_insti()
+        insti_page.click_want_name('闫')
+        insti_page.click_want_phone('139abcd7258')
+        insti_page.click_want_course('数据结构')
+        insti_page.click_want_contact()
+        sleep(3)
+        self.assertTrue(self.browser.find_element_by_id('jsCompanyTips').text == '添加出错', 'ERROR')
+
+    def test_B4_3_1_14(self):
+        u'''test_B4_3_1_14'''
+        insti_page = BasePage.InstiPage(self.browser)
+        insti_page.click_insti()
+        insti_page.click_want_name('闫')
+        insti_page.click_want_phone('1390436  58')
+        insti_page.click_want_course('数据结构')
+        insti_page.click_want_contact()
+        sleep(3)
+        self.assertTrue(self.browser.find_element_by_id('jsCompanyTips').text == '添加出错', 'ERROR')
+
+    def test_B4_3_1_15(self):
+        u'''test_B4_3_1_15'''
+        insti_page = BasePage.InstiPage(self.browser)
+        insti_page.click_insti()
+        insti_page.click_want_name('闫')
+        insti_page.click_want_phone('13904367258')
+        insti_page.click_want_course('复变函数')
+        insti_page.click_want_contact()
+        s = insti_page.click_alert()
+        self.assertTrue(s == 1, 'ERROR')
+
+    def test_B4_3_1_16(self):
+        u'''test_B4_3_1_16'''
+        insti_page = BasePage.InstiPage(self.browser)
+        insti_page.click_insti()
+        insti_page.click_want_name('闫')
+        insti_page.click_want_phone('13904367258')
+        insti_page.click_want_course('~!@#$%^&*()_+|{}:"<>?.,;\'[]\=-')
+        insti_page.click_want_contact()
+        s = insti_page.click_alert()
+        self.assertTrue(s == 1, 'ERROR')
+
+    def test_B4_4(self):
+        u'''test_B4_4'''
+        insti_page = BasePage.InstiPage(self.browser)
+        insti_page.click_insti()
+        insti_page.click_ranklist_insti()
+        self.assertIn('机构首页', self.browser.title)
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

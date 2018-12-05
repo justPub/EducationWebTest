@@ -1,6 +1,7 @@
 # coding=utf-8
 from time import sleep
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver import ActionChains
 
 class BasePage(object):
     def __init__(self, driver):
@@ -18,25 +19,19 @@ class BasePage(object):
 
     # 退出登录
     def log_out(self):
-        s = self.driver.find_elements_by_xpath("/html/body/section[1]/header/div/div[1]/div/div[2]/dl/dd")
-        flag = len(s)
-        if flag == 1:
-            print('woshicuode')
-        self.driver.find_element_by_xpath(
-            "/html/body/section[1]/header/div/div[1]/div/div[2]/dl/dd").click()  # 个人信息
+        move = self.driver.find_element_by_xpath(
+            "/html/body/section[1]/div/div[1]/div/div[2]/dl")  # 个人信息
+        ActionChains(self.driver).move_to_element(move).perform()
         # self.driver.find_element_by_css_selector('.btn>a[2]').click() # 退出
-        sleep(8)
-        q = self.driver.find_elements_by_xpath("/html/body/section[1]/header/div/div[1]/div/div[2]/div/div/a[2]")
-        bool = len(q)
-        if bool == False:
-            print('woshicuode')
-        self.driver.find_element_by_css_selector('.fr').click() # 退出
+        # sleep(8)
+        self.driver.switch_to.active_element.find_element_by_xpath(
+            "/html/body/section[1]/div/div[1]/div/div[2]/div/div/a[2]").click()  # 退出
+        # self.driver.find_element_by_css_selector('.fr').click() # 退出
         # self.driver.find_element_by_xpath(
         #     "/html/body/section[1]/header/div/div[1]/div/div[2]/div/div/a[2]").click()  # 退出
 
     # 登录
     def log_in(self):
-        self.driver.find_element_by_link_text("登录").click()
         self.driver.find_element_by_id("account_l").send_keys('yankai')
         self.driver.find_element_by_id("password_l").send_keys('abc123456' + Keys.RETURN)
         self.driver.find_element_by_id("jsLoginBtn").click()
@@ -169,6 +164,12 @@ class TeacherPage(BasePage):
         self.driver.find_element_by_xpath(
             '/html/body/section[3]/div/div[2]/dl[2]/dd/a/h1').click()  # 【刘小峰】
 
+    # 对详情中收藏做前置判断
+    def judge_detail_collection(self):
+        if self.driver.find_element_by_xpath("//*[@id=\"jsLeftBtn\"]").text == '收藏':
+            return True
+        return False
+
     # 点击详情中收藏
     def click_detail_collection(self):
         self.driver.find_element_by_xpath("//*[@id=\"jsLeftBtn\"]").click()  # 收藏
@@ -178,9 +179,15 @@ class TeacherPage(BasePage):
         self.driver.find_element_by_xpath(
             "/html/body/section[3]/div/div[1]/div[1]/div/dl/dt/div[2]/span[2]/a").click()  # 分享
 
+    # 对点击详情中对应机构中的收藏做前置判断
+    def judge_detail_insti_collection(self):
+        if self.driver.find_element_by_xpath("//*[@id=\"jsRightBtn\"]").text == '收藏':
+            return True
+        return False
+
     # 点击详情中对应机构中的收藏
     def click_detail_insti_collection(self):
-        self.driver.find_element_by_xpath("//*[@id=\"jsRightBtn\"]").click()  # 对应机构中的收藏
+            self.driver.find_element_by_xpath("//*[@id=\"jsRightBtn\"]").click()  # 对应机构中的收藏
 
     # 点击详情中具体课程【武剑洁->数据结构】
     def click_detail_course(self):
@@ -192,3 +199,80 @@ class TeacherPage(BasePage):
         self.driver.find_element_by_xpath(
             '/html/body/section[3]/div/div[2]/div[2]/div/div/dl[2]/dd/a/h1').click()  # 【刘小峰】
 
+class InstiPage(BasePage):
+    # 点击授课机构
+    def click_insti(self):
+        self.driver.find_element_by_link_text("授课机构").click()
+
+    # 点击机构类别中的全部
+    def click_class_all(self):
+        self.driver.find_element_by_xpath(
+            '/html/body/section[3]/div/div[1]/div[1]/ul/li[1]/div/a[1]/span').click()  # 【机构类别中的全部】
+
+    # 点击机构类别中的培训机构
+    def click_class_insti(self):
+        self.driver.find_element_by_xpath(
+            '/html/body/section[3]/div/div[1]/div[1]/ul/li[1]/div/a[2]/span').click()  # 【机构类别中的培训机构】
+
+    # 点击所在地区中的全部
+    def click_province_all(self):
+        self.driver.find_element_by_xpath(
+            '/html/body/section[3]/div/div[1]/div[1]/ul/li[2]/div[2]/a[1]/span').click()  # 【所在地区中的全部】
+
+    # 点击所在地区中的武汉
+    def click_province_wuhan(self):
+        self.driver.find_element_by_xpath(
+            '/html/body/section[3]/div/div[1]/div[1]/ul/li[2]/div[2]/a[2]/span').click()  # 【所在地区中的武汉】
+
+    # 点击列表中的全部
+    def click_list_all(self):
+        self.driver.find_element_by_xpath(
+            '/html/body/section[3]/div/div[1]/div[3]/div[1]/div/ul/li[1]/a').click()  # 【列表中的全部】
+
+    # 点击列表中的学习人数
+    def click_list_learn(self):
+        self.driver.find_element_by_xpath(
+            '/html/body/section[3]/div/div[1]/div[3]/div[1]/div/ul/li[2]/a').click()  # 【列表中的学习人数】
+
+    # 点击列表中的课程数
+    def click_list_course(self):
+        self.driver.find_element_by_xpath(
+            '/html/body/section[3]/div/div[1]/div[3]/div[1]/div/ul/li[3]/a').click()  # 【列表中的课程数】
+
+    # 点击联系服务【第一个】
+    def click_contact(self):
+        self.driver.find_element_by_xpath(
+            '/html/body/section[3]/div/div[1]/div[3]/div[1]/dl[1]/div').click() # 【第一个->联系服务】
+
+    # 点击授课机构排名中的机构【第一个】
+    def click_ranklist_insti(self):
+        self.driver.find_element_by_xpath(
+            '/html/body/section[3]/div/div[3]/dl[1]/dd/a/h1').click()  # 【授课机构排名->第一个】
+
+    # 点击我要学习中的名字
+    def click_want_name(self, keyword=''):
+        self.driver.find_element_by_id('companyName').send_keys(keyword)  # 【我要学习->名字】
+
+    # 点击我要学习中的联系电话
+    def click_want_phone(self, keyword=''):
+        self.driver.find_element_by_id('companyMobile').send_keys(keyword)  # 【我要学习->联系电话】
+
+    # 点击我要学习中的课程名
+    def click_want_course(self, keyword=''):
+        self.driver.find_element_by_id('companyAddress').send_keys(keyword)  # 【我要学习->课程名】
+
+    # 点击我要学习的立即咨询
+    def click_want_contact(self):
+        self.driver.find_element_by_id('jsStayBtn').click()  # 【我要学习->立即咨询】
+
+    # alert
+    def click_alert(self):
+        sleep(3)
+        dialog_box = self.driver.switch_to.alert
+        sleep(3)
+        if dialog_box.text == '提交成功':
+            s = 1
+        else:
+            s = 0
+        dialog_box.accept()
+        return s
