@@ -675,7 +675,7 @@ class TeacherTestCase(unittest.TestCase):
         teacher_page.click_all()
         teacher_page.click_details()
         self.assertIn('讲师详情 - 慕学在线网', self.browser.title)
-        teacher_page.log_in()
+        # teacher_page.log_in()
 
     def test_B3_2_1_2(self):
         u'''test_B3_2_1_2'''
@@ -692,10 +692,10 @@ class TeacherTestCase(unittest.TestCase):
         teacher_page.click_teacher()
         teacher_page.click_all()
         teacher_page.click_details()
-        self.flag = self.assertIn('讲师详情 - 慕学在线网', self.browser.title)
-        teacher_page
         self.assertIn('讲师详情 - 慕学在线网', self.browser.title)
-        teacher_page.log_in()
+        teacher_page.click_detail_collection()
+        self.assertIn('讲师详情 - 慕学在线网', self.browser.title)
+        # teacher_page.log_in()
         # self.assertTrue(teacher_page.is_element_exist('/html/body/section[2]/div/div/ul/li[3]'), 'ERROR')
 
 if __name__ == '__main__':

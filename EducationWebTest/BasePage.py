@@ -18,15 +18,25 @@ class BasePage(object):
 
     # 退出登录
     def log_out(self):
+        s = self.driver.find_elements_by_xpath("/html/body/section[1]/header/div/div[1]/div/div[2]/dl/dd")
+        flag = len(s)
+        if flag == 1:
+            print('woshicuode')
         self.driver.find_element_by_xpath(
             "/html/body/section[1]/header/div/div[1]/div/div[2]/dl/dd").click()  # 个人信息
         # self.driver.find_element_by_css_selector('.btn>a[2]').click() # 退出
-        sleep(11)
-        self.driver.find_element_by_xpath(
-            "/html/body/section[1]/header/div/div[1]/div/div[2]/div/div/a[2]").click()  # 退出
+        sleep(8)
+        q = self.driver.find_elements_by_xpath("/html/body/section[1]/header/div/div[1]/div/div[2]/div/div/a[2]")
+        bool = len(q)
+        if bool == False:
+            print('woshicuode')
+        self.driver.find_element_by_css_selector('.fr').click() # 退出
+        # self.driver.find_element_by_xpath(
+        #     "/html/body/section[1]/header/div/div[1]/div/div[2]/div/div/a[2]").click()  # 退出
 
     # 登录
     def log_in(self):
+        self.driver.find_element_by_link_text("登录").click()
         self.driver.find_element_by_id("account_l").send_keys('yankai')
         self.driver.find_element_by_id("password_l").send_keys('abc123456' + Keys.RETURN)
         self.driver.find_element_by_id("jsLoginBtn").click()

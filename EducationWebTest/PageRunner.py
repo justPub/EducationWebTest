@@ -16,10 +16,12 @@ import HTMLTestRunner
 
 testunit=unittest.TestSuite()
 # 将测试用例加入到测试容器(套件)中
-testunit.addTest(unittest.makeSuite(TestPage.HomeTestCase))
-testunit.addTest(unittest.makeSuite(TestPage.CourseTestCase))
+# testunit.addTest(unittest.makeSuite(TestPage.HomeTestCase))
+# testunit.addTest(unittest.makeSuite(TestPage.CourseTestCase))
+testunit.addTest(unittest.makeSuite(TestPage.TeacherTestCase))
 # 定义个报告存放路径，支持相对路径。
 filename= "C:\\Users\\k\\PycharmProjects\\EducationWebTest\\"+"result.html"
+# filename= "F:\\YK\\software\\PythonProjects\\"+"result.html"
 fp = open(filename,"wb")
 runner =HTMLTestRunner.HTMLTestRunner(stream=fp,title=u'测试报告',description=u'用例执行情况：')
 # 执行测试用例
