@@ -2519,3 +2519,40 @@ console.error: BroadcastService:
 
 ###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
 
+1543969580564	mozrunner::runner	INFO	Running command: "C:\\Users\\k\\software\\firfox47.0.2\\firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\k\\AppData\\Local\\Temp\\rust_mozprofile.7alEHKGDWXfB"
+1543969584168	Marionette	INFO	Listening on port 57838
+1543969584463	Marionette	WARN	TLS certificate errors will be ignored for this session
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:721:13
+
+JavaScript error: http://111.230.45.33:3000/org/home/1/, line 296: TypeError: $(...).unslider is not a function
+1543969664925	Marionette	INFO	Stopped listening on port 57838
+[Parent 11072, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 3352, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 3352, Chrome_Chi[Parent 11072, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[GPU
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+1543969669857	mozrunner::runner	INFO	Running command: "C:\\Users\\k\\software\\firfox47.0.2\\firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\k\\AppData\\Local\\Temp\\rust_mozprofile.Z8zN1nXbBeuw"
+1543969672544	Marionette	INFO	Listening on port 58135
+1543969672669	Marionette	WARN	TLS certificate errors will be ignored for this session
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:721:13
+
+1543969836764	Marionette	INFO	Stopped listening on port 58135
+[Parent 2408, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 8452, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 8452,[Parent 2408, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[GP
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e8253ed5-aedc-4f53-abbe-3c32fe0ee2eb" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EducationWebTest/BasePage.py" beforeDir="false" afterPath="$PROJECT_DIR$/EducationWebTest/BasePage.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EducationWebTest/PageRunner.py" beforeDir="false" afterPath="$PROJECT_DIR$/EducationWebTest/PageRunner.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EducationWebTest/TestPage.py" beforeDir="false" afterPath="$PROJECT_DIR$/EducationWebTest/TestPage.py" afterDir="false" />
@@ -16,18 +17,20 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/EducationWebTest$Unittests_for_TestPage_HomeTestCase_test_B1_4.coverage" NAME="Unittests for TestPage.HomeTestCase.test_B1_4 Coverage Results" MODIFIED="1543938459122" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/EducationWebTest" />
     <SUITE FILE_PATH="coverage/EducationWebTest$Unittests_in_TestPage_py.coverage" NAME="Unittests in TestPage.py Coverage Results" MODIFIED="1543933324081" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/EducationWebTest" />
-    <SUITE FILE_PATH="coverage/EducationWebTest$PageRunner.coverage" NAME="PageRunner Coverage Results" MODIFIED="1543942396775" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/EducationWebTest" />
+    <SUITE FILE_PATH="coverage/EducationWebTest$PageRunner.coverage" NAME="PageRunner Coverage Results" MODIFIED="1543971337920" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/EducationWebTest" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/EducationWebTest/TestPage.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="447">
-              <caret line="625" column="30" selection-start-line="625" selection-start-column="30" selection-end-line="625" selection-end-column="30" />
+            <state relative-caret-position="264">
+              <caret line="697" column="29" lean-forward="true" selection-start-line="697" selection-start-column="29" selection-end-line="697" selection-end-column="29" />
               <folding>
                 <element signature="e#311#326#0" expanded="true" />
+                <element signature="e#506#11797#0" />
                 <element signature="e#11845#23805#0" />
+                <element signature="e#24329#24952#1" />
               </folding>
             </state>
           </provider>
@@ -63,25 +66,24 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/EducationWebTest/BasePage.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2660">
-              <caret line="141" column="59" selection-start-line="141" selection-start-column="59" selection-end-line="141" selection-end-column="59" />
+            <state relative-caret-position="513">
+              <caret line="183" lean-forward="true" selection-start-line="183" selection-end-line="183" />
               <folding>
                 <element signature="e#15#37#0" expanded="true" />
+                <element signature="e#451#970#0" />
+                <element signature="e#1774#3454#0" />
+                <element signature="e#2819#4071#0" />
+                <element signature="e#4775#6427#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/result.html">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/EducationWebTest/PageRunner.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+            <state relative-caret-position="190">
+              <caret line="14" column="22" lean-forward="true" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
               <folding>
                 <element signature="e#15#30#0" expanded="true" />
               </folding>
@@ -105,7 +107,11 @@
     <findStrings>
       <find>sleep</find>
       <find>B1_5</find>
+      <find>test_B2_3_1_1_1</find>
     </findStrings>
+    <dirStrings>
+      <dir>C:\Users\k\PycharmProjects\EducationWebTest</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -240,6 +246,7 @@
       <updated>1543927761857</updated>
       <workItem from="1543927764982" duration="13618000" />
       <workItem from="1543942570546" duration="23000" />
+      <workItem from="1543969556938" duration="3680000" />
     </task>
     <servers />
   </component>
@@ -255,7 +262,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13641000" />
+    <option name="totallyTimeSpent" value="17321000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -268,13 +275,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25340393" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25718608" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3295082" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3295082" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -316,17 +324,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/EducationWebTest/TestPage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="625" column="30" selection-start-line="625" selection-start-column="30" selection-end-line="625" selection-end-column="30" />
-          <folding>
-            <element signature="e#311#326#0" expanded="true" />
-            <element signature="e#11845#23805#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3/unittest/__init__.pyi">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="741">
@@ -348,25 +345,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/EducationWebTest/BasePage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2660">
-          <caret line="141" column="59" selection-start-line="141" selection-start-column="59" selection-end-line="141" selection-end-column="59" />
-          <folding>
-            <element signature="e#15#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/result.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EducationWebTest/result.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/EducationWebTest/PageRunner.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+        <state relative-caret-position="190">
+          <caret line="14" column="22" lean-forward="true" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
           <folding>
             <element signature="e#15#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EducationWebTest/BasePage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="183" lean-forward="true" selection-start-line="183" selection-end-line="183" />
+          <folding>
+            <element signature="e#15#37#0" expanded="true" />
+            <element signature="e#451#970#0" />
+            <element signature="e#1774#3454#0" />
+            <element signature="e#2819#4071#0" />
+            <element signature="e#4775#6427#0" />
           </folding>
         </state>
       </provider>
@@ -374,8 +378,18 @@
     <entry file="file://$PROJECT_DIR$/EducationWebTest/geckodriver.log">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/EducationWebTest/result.html">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/EducationWebTest/TestPage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="697" column="29" lean-forward="true" selection-start-line="697" selection-start-column="29" selection-end-line="697" selection-end-column="29" />
+          <folding>
+            <element signature="e#311#326#0" expanded="true" />
+            <element signature="e#506#11797#0" />
+            <element signature="e#11845#23805#0" />
+            <element signature="e#24329#24952#1" />
+          </folding>
+        </state>
+      </provider>
     </entry>
   </component>
 </project>

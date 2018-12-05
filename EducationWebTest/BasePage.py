@@ -16,6 +16,26 @@ class BasePage(object):
         else:
             return False
 
+    # 退出登录
+    def log_out(self):
+        self.driver.find_element_by_xpath(
+            "/html/body/section[1]/header/div/div[1]/div/div[2]/dl/dd").click()  # 个人信息
+        # self.driver.find_element_by_css_selector('.btn>a[2]').click() # 退出
+        sleep(11)
+        self.driver.find_element_by_xpath(
+            "/html/body/section[1]/header/div/div[1]/div/div[2]/div/div/a[2]").click()  # 退出
+
+    # 登录
+    def log_in(self):
+        self.driver.find_element_by_id("account_l").send_keys('yankai')
+        self.driver.find_element_by_id("password_l").send_keys('abc123456' + Keys.RETURN)
+        self.driver.find_element_by_id("jsLoginBtn").click()
+        sleep(5)
+
+    # 返回首页
+    def return_homePage(self):
+        self.driver.find_element_by_link_text("首页").click()
+
 class LoginPage(BasePage):
     # 从输入的username获取用户名
     def set_username(self, username):
@@ -77,10 +97,6 @@ class HomePage(BasePage):
         self.driver.find_element_by_xpath(
             "/html/body/section[1]/header/div/div[2]/div/div/div/ul/li[3]").click() # 授课老师
 
-    # 返回首页
-    def return_homePage(self):
-        self.driver.find_element_by_link_text("首页").click()
-
 class CoursePage(BasePage):
     # 点击公开课
     def click_course(self):
@@ -121,23 +137,48 @@ class CoursePage(BasePage):
     def click_insti_collection(self):
         self.driver.find_element_by_xpath("//*[@id=\"jsRightBtn\"]").click()  # 授课机构中的收藏
 
-    # 退出登录
-    def log_out(self):
-        self.driver.find_element_by_xpath(
-            "/html/body/section[1]/header/div/div[1]/div/div[2]/dl/dd").click()  # 个人信息
-        # self.driver.find_element_by_css_selector('.btn>a[2]').click() # 退出
-        sleep(8)
-        self.driver.find_element_by_xpath(
-            "/html/body/section[1]/header/div/div[1]/div/div[2]/div/div/a[2]").click()  # 退出
+class TeacherPage(BasePage):
+    # 点击授课教师
+    def click_teacher(self):
+        self.driver.find_element_by_link_text("授课教师").click()
 
-    # 登录
-    def log_in(self):
-        self.driver.find_element_by_id("account_l").send_keys('yankai')
-        self.driver.find_element_by_id("password_l").send_keys('abc123456' + Keys.RETURN)
-        self.driver.find_element_by_id("jsLoginBtn").click()
-        sleep(5)
+    # 点击全部
+    def click_all(self):
+        self.driver.find_element_by_xpath("/html/body/section[3]/div/div[1]/div[1]/div/ul/li[1]/a").click()  # 全部
 
-    # 返回首页
-    def return_homePage(self):
-        self.driver.find_element_by_link_text("首页").click()
+    # 点击人气
+    def click_polpularity(self):
+        self.driver.find_element_by_xpath("/html/body/section[3]/div/div[1]/div[1]/div/ul/li[2]/a").click()  # 人气
+
+    # 点击查看详情【武剑洁】
+    def click_details(self):
+        self.driver.find_element_by_xpath("/html/body/section[3]/div/div[1]/div[1]/dl[1]/a").click()  # 查看详情
+
+    # 点击讲师排行榜中的讲师【刘小峰】
+    def click_ranklist_teacher(self):
+        self.driver.find_element_by_xpath(
+            '/html/body/section[3]/div/div[2]/dl[2]/dd/a/h1').click()  # 【刘小峰】
+
+    # 点击详情中收藏
+    def click_detail_collection(self):
+        self.driver.find_element_by_xpath("//*[@id=\"jsLeftBtn\"]").click()  # 收藏
+
+    # 点击详情中分享
+    def click_detail_share(self):
+        self.driver.find_element_by_xpath(
+            "/html/body/section[3]/div/div[1]/div[1]/div/dl/dt/div[2]/span[2]/a").click()  # 分享
+
+    # 点击详情中对应机构中的收藏
+    def click_detail_insti_collection(self):
+        self.driver.find_element_by_xpath("//*[@id=\"jsRightBtn\"]").click()  # 对应机构中的收藏
+
+    # 点击详情中具体课程【武剑洁->数据结构】
+    def click_detail_course(self):
+        self.driver.find_element_by_xpath(
+            '/html/body/section[3]/div/div[1]/div[2]/div/div[2]/div/div/div[1]/a/h2').click() # 【武剑洁->数据结构】
+
+    # 点击详情中讲师排行榜中的讲师【刘小峰】
+    def click_detail_ranklist_teacher(self):
+        self.driver.find_element_by_xpath(
+            '/html/body/section[3]/div/div[2]/div[2]/div/div/dl[2]/dd/a/h1').click()  # 【刘小峰】
 

@@ -622,5 +622,81 @@ class CourseTestCase(unittest.TestCase):
         course_page.click_course_se()
         self.assertTrue(course_page.is_element_exist('/html/body/section[2]/div/div/ul/li[3]'), 'ERROR')
 
+class TeacherTestCase(unittest.TestCase):
+
+    @classmethod
+    def setUpClass(cls):
+        print("开始测试")
+        cls.browser = webdriver.Firefox()
+        cls.browser.get('http://111.230.45.33:3000/')
+        login_page = BasePage.LoginPage(cls.browser)
+        login_page.click_loginButton()
+        login_page.set_username("yankai")
+        login_page.set_password("abc123456")
+        login_page.click_login()
+
+    @classmethod
+    def tearDownClass(cls):
+        print("结束测试")
+        cls.browser.quit()
+
+    '''
+        def setUp(self):
+        global mutex_lock
+        while mutex_lock == 0:
+            print('开始')
+            self.browser = webdriver.Firefox()
+            self.browser.get('http://111.230.45.33:3000/')
+            login_page = BasePage.LoginPage(self.browser)
+            login_page.click_loginButton()
+            login_page.set_username("yankai")
+            login_page.set_password("abc123456")
+            login_page.click_login()
+            mutex_lock = 1
+
+    def tearDown(self):
+        while self.clock == 0:
+            print('结束')
+            self.browser.close()
+            self.clock = 1
+    '''
+
+    def test_B3_1(self):
+        u'''test_B3_1'''
+        teacher_page = BasePage.TeacherPage(self.browser)
+        teacher_page.click_teacher()
+        self.assertIn('课程讲师 - 慕学在线网', self.browser.title)
+
+    def test_B3_2_1_1(self):
+        u'''test_B3_2_1_1'''
+        teacher_page = BasePage.TeacherPage(self.browser)
+        teacher_page.log_out()
+        teacher_page.click_teacher()
+        teacher_page.click_all()
+        teacher_page.click_details()
+        self.assertIn('讲师详情 - 慕学在线网', self.browser.title)
+        teacher_page.log_in()
+
+    def test_B3_2_1_2(self):
+        u'''test_B3_2_1_2'''
+        teacher_page = BasePage.TeacherPage(self.browser)
+        teacher_page.click_teacher()
+        teacher_page.click_all()
+        teacher_page.click_details()
+        self.assertIn('讲师详情 - 慕学在线网', self.browser.title)
+
+    def test_B3_2_1_1_1(self):
+        u'''test_B3_2_1_1_1'''
+        teacher_page = BasePage.TeacherPage(self.browser)
+        teacher_page.log_out()
+        teacher_page.click_teacher()
+        teacher_page.click_all()
+        teacher_page.click_details()
+        self.flag = self.assertIn('讲师详情 - 慕学在线网', self.browser.title)
+        teacher_page
+        self.assertIn('讲师详情 - 慕学在线网', self.browser.title)
+        teacher_page.log_in()
+        # self.assertTrue(teacher_page.is_element_exist('/html/body/section[2]/div/div/ul/li[3]'), 'ERROR')
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
